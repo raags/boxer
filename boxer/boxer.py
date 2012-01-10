@@ -30,12 +30,21 @@ class Boxer:
 
     def __init__(self, txt):
         self.txt = txt
-        self.length = len(self.txt)
+    
+        " Find largest string on a line"
+        tlist = txt.split('\n')
+        maxlength = 1
+        for text in tlist:
+            length = len(text)
+            if (length > maxlength):
+                maxlength = length
+
+        self.length = maxlength
 
         " Looks bad, but it works! "
 
     def drawline(self, char):
-        for i in self.txt:
+        for i in range(self.length):
             sys.stdout.write(char)
 
     def display(self):
