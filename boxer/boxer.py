@@ -13,20 +13,29 @@
 # 
 # 
 #  Description:
-#  
+#  Draw an ascii box around your text 
 # 
 #  Author: Raghu Udiyar <raghusiddarth@gmail.com>
 #
-# Example of usage:
-# 
-# $
+#  Example:
 #
+#    $ python boxer.py "Hello
+#    > World"
+#      -------
+#     |       |
+#     | Hello |
+#     | World |
+#     |       |
+#      -------
+#
+
+
 import sys
 import argparse
 
 
 class Boxer:
-    """Draw a ascii box around your text"""
+    """Draw an ascii box around your text"""
 
     def __init__(self, txt):
         self._txt_ = txt
@@ -46,15 +55,28 @@ class Boxer:
     def drawline(self, char):
         for i in xrange(self.width):
             sys.stdout.write(char)
-
-    def display(self):
-
+    
+    def drawtop(self):
+        
         sys.stdout.write(" -")
         self.drawline("-")
         sys.stdout.write("-\n")
         sys.stdout.write("|")
         self.drawline(" ")
         sys.stdout.write("  |\n")
+
+    def drawbottom(self):
+
+        sys.stdout.write("|")
+        self.drawline(" ")
+        sys.stdout.write("  |\n")
+        sys.stdout.write(" -")
+        self.drawline("-")
+        sys.stdout.write("-\n")
+
+    def display(self):
+
+        self.drawtop()
 
         for string in self.tlist:
             sys.stdout.write("| ")
@@ -65,13 +87,7 @@ class Boxer:
                 sys.stdout.write(" ")
             sys.stdout.write(" |\n")
 
-        sys.stdout.write("|")
-        self.drawline(" ")
-        sys.stdout.write("  |\n")
-
-        sys.stdout.write(" -")
-        self.drawline("-")
-        sys.stdout.write("-\n")
+        self.drawbottom()
 
 def getargs():
         parser = argparse.ArgumentParser(description='Draw boxes around text')
