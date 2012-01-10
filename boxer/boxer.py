@@ -57,23 +57,17 @@ class Boxer:
         sys.stdout.write("-\n")
 
 def getargs():
-        parser = argparse.ArgumentParser(description='Add a description here')
+        parser = argparse.ArgumentParser(description='Draw boxes around text')
 
-        parser.add_argument('--option', action='store_true')
-      
-        parser.add_argument('commands', metavar='commands', nargs='?', type=str, help =
-                            'Accepts one or two', choices=['one', 'two'])
+        parser.add_argument('text', metavar='text', type=str, help =
+                            'Text to box')
         parser.add_argument('--version', action='version', version='VERSION',
                             help= 'Show version')
         args = parser.parse_args()
 
-        if args.option:
-            print "You chose an optoin"
-        
-        if args.commands  == 'write':
-           print "Command one"
-        elif args.commands == 'read':
-            print "Command two"
+        if args.text:
+            b1 = Boxer(args.text)
+            b1.display()
 
 def main():
     getargs()
