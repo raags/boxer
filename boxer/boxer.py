@@ -29,22 +29,22 @@ class Boxer:
     """Draw a ascii box around your text"""
 
     def __init__(self, txt):
-        self.txt = txt
+        self._txt_ = txt
     
-        " Find largest string on a line"
+        "Find the largest string (separated by newline)"
         self.tlist = txt.split('\n')
-        maxlength = 1
-        for text in self.tlist:
-            length = len(text)
-            if (length > maxlength):
-                maxlength = length
+        maxlength  = 1
+        for string in self.tlist:
+            slen = len(string)
+            if (slen > maxlength):
+                maxlength = slen
 
-        self.length = maxlength
+        self.width = maxlength
 
-        " Looks bad, but it works! "
+        "Looks bad, but it works! "
 
     def drawline(self, char):
-        for i in range(self.length):
+        for i in xrange(self.width):
             sys.stdout.write(char)
 
     def display(self):
@@ -56,12 +56,12 @@ class Boxer:
         self.drawline(" ")
         sys.stdout.write("  |\n")
 
-        for txt in self.tlist:
+        for string in self.tlist:
             sys.stdout.write("| ")
             
-            sys.stdout.write(txt) 
-            spaces = self.length - len(txt)
-            for i in range(spaces):
+            sys.stdout.write(string) 
+            spaces = self.width - len(string)
+            for i in xrange(spaces):
                 sys.stdout.write(" ")
             sys.stdout.write(" |\n")
 
