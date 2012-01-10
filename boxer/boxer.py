@@ -32,9 +32,9 @@ class Boxer:
         self.txt = txt
     
         " Find largest string on a line"
-        tlist = txt.split('\n')
+        self.tlist = txt.split('\n')
         maxlength = 1
-        for text in tlist:
+        for text in self.tlist:
             length = len(text)
             if (length > maxlength):
                 maxlength = length
@@ -48,6 +48,7 @@ class Boxer:
             sys.stdout.write(char)
 
     def display(self):
+
         sys.stdout.write(" -")
         self.drawline("-")
         sys.stdout.write("-\n")
@@ -55,7 +56,14 @@ class Boxer:
         self.drawline(" ")
         sys.stdout.write("  |\n")
 
-        print "| %s |" % self.txt
+        for txt in self.tlist:
+            sys.stdout.write("| ")
+            
+            sys.stdout.write(txt) 
+            spaces = self.length - len(txt)
+            for i in range(spaces):
+                sys.stdout.write(" ")
+            sys.stdout.write(" |\n")
 
         sys.stdout.write("|")
         self.drawline(" ")
