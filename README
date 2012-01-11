@@ -1,0 +1,19 @@
+Author: 
+Raghu Udiyar <raghusiddarth@gmail.com>
+
+Description:
+Draw an ascii box around your text 
+
+
+Example:
+
+$ python boxer.py "Hello
+> World"
+      -------
+     |       |
+     | Hello |
+     | World |
+     |       |
+      -------
+
+
